@@ -42,5 +42,22 @@ Get an example audio file if you don't already have one. I've renamed this one t
 
 ```
 wget https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav
-mv taunt.wav myfile.wav
+```
+
+With the database already running, start the server in one terminal:
+
+```
+npm run build;
+npm run start;
+```
+
+Then you can use the API exactly as described above:
+
+```
+curl -X POST --data-binary @taunt.wav http://localhost:3000/post
+curl http://localhost:3000/list?maxduration=300
+curl http://localhost:3000/download?name=taunt.wav --output downloaded-taunt.wav
+md5 taunt.wav downloaded-taunt.wav
+MD5 (taunt.wav) = bdff3faccd932c1ef35d3239e11738cb
+MD5 (downloaded-taunt.wav) = bdff3faccd932c1ef35d3239e11738cb
 ```
